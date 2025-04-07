@@ -6,6 +6,9 @@ const openai = new OpenAI();
 
 const app = express();
 app.use(bodyParser.json());
+app.get("/", (req, res) => {
+  res.send("🎓 AI Tutor is live! You can POST to /chat with your messages.");
+});
 app.use(express.static("public"));
 
 app.post("/chat", async (req, res) => {
