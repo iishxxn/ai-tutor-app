@@ -6,10 +6,7 @@ const openai = new OpenAI();
 
 const app = express();
 app.use(bodyParser.json());
-app.get("/", (req, res) => {
-  res.send("🎓 AI Tutor is live! You can POST to /chat with your messages.");
-});
-app.use(express.static("public"));
+app.use(express.static("public")); // 👈 Moved this up
 
 app.post("/chat", async (req, res) => {
   const userMessage = req.body.message;
@@ -23,7 +20,7 @@ app.post("/chat", async (req, res) => {
       ]
     });
 
-    res.json({ reply: response.choices[0].message.content });
+    res.json({ message: response.choices[0].message.content }); // 👈 Match this with frontend
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Something went wrong." });
