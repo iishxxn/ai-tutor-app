@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const OpenAI = require("openai");
+const fs = require("fs");
+const path = require("path");
 
 const openai = new OpenAI();
 
@@ -35,6 +37,18 @@ else if (subject === "business") systemPrompt = "You are a Business and Finance 
     console.error(error);
     res.status(500).json({ error: "Something went wrong." });
   }
+})
+app.get("/data/class9", (req, res) => {
+  const filePath = path.join(__dirname, "data", "cbse", "class9.json");
+
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) {
+      console.error("Error reading Class 9 data:", err);
+      return res.status(500).json({ error: "Failed to load data" });
+    }
+
+    res.json(JSON.parse(data));
+  });
 });
 
 app.listen(3000, () => console.log("✅ AI Tutor running on port 3000"));
