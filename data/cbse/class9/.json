@@ -1,0 +1,152 @@
+{
+  "class": 9,
+  "subjects": {
+    "Science": {
+      "chapters": [
+        {
+          "name": "Matter in Our Surroundings",
+          "topics": ["States of matter", "Characteristics of particles", "Diffusion", "Latent heat", "Evaporation"]
+        },
+        {
+          "name": "Is Matter Around Us Pure?",
+          "topics": ["Mixtures", "Solutions", "Suspensions", "Colloids", "Separation of components", "Types of substances"]
+        },
+        {
+          "name": "Atoms and Molecules",
+          "topics": ["Laws of chemical combination", "Dalton’s atomic theory", "Chemical formulae", "Molecular mass"]
+        },
+        {
+          "name": "Structure of the Atom",
+          "topics": ["Electrons, protons and neutrons", "Thomson’s and Rutherford’s model", "Bohr’s model", "Atomic number", "Isotopes and isobars"]
+        },
+        {
+          "name": "The Fundamental Unit of Life",
+          "topics": ["Cell structure", "Cell organelles", "Plasma membrane", "Nucleus", "Cytoplasm"]
+        },
+        {
+          "name": "Tissues",
+          "topics": ["Plant tissues", "Animal tissues"]
+        },
+        {
+          "name": "Diversity in Living Organisms",
+          "topics": ["Classification", "Hierarchy", "Kingdoms", "Features of organisms"]
+        },
+        {
+          "name": "Motion",
+          "topics": ["Distance and displacement", "Speed and velocity", "Acceleration", "Graphs", "Equations of motion"]
+        },
+        {
+          "name": "Force and Laws of Motion",
+          "topics": ["Balanced and unbalanced forces", "Newton’s laws", "Inertia", "Momentum"]
+        },
+        {
+          "name": "Gravitation",
+          "topics": ["Gravity", "Free fall", "Mass and weight", "Thrust and pressure", "Archimedes’ principle"]
+        },
+        {
+          "name": "Work and Energy",
+          "topics": ["Work done", "Power", "Kinetic and potential energy", "Law of conservation of energy"]
+        },
+        {
+          "name": "Sound",
+          "topics": ["Nature of sound", "Propagation", "Speed", "Reflection", "Echo", "Range of hearing"]
+        },
+        {
+          "name": "Why Do We Fall Ill?",
+          "topics": ["Health and disease", "Causes of disease", "Prevention", "Immunization"]
+        },
+        {
+          "name": "Natural Resources",
+          "topics": ["Air, water, soil", "Biogeochemical cycles", "Ozone layer", "Sustainable management"]
+        },
+        {
+          "name": "Improvement in Food Resources",
+          "topics": ["Crop production", "Animal husbandry", "Poultry", "Fish production"]
+        }
+      ]
+    },
+    "Mathematics": {
+      "chapters": [
+        { "name": "Number Systems", "topics": ["Rational and irrational numbers", "Laws of exponents", "Real number line"] },
+        { "name": "Polynomials", "topics": ["Types of polynomials", "Zeroes", "Factorization", "Remainder theorem"] },
+        { "name": "Coordinate Geometry", "topics": ["Cartesian plane", "Plotting points", "Coordinates"] },
+        { "name": "Linear Equations in Two Variables", "topics": ["Graphical representation", "Solutions", "Word problems"] },
+        { "name": "Introduction to Euclid’s Geometry", "topics": ["Axioms", "Postulates", "Theorems"] },
+        { "name": "Lines and Angles", "topics": ["Intersecting and parallel lines", "Angles", "Properties"] },
+        { "name": "Triangles", "topics": ["Congruence", "Inequalities", "Properties"] },
+        { "name": "Quadrilaterals", "topics": ["Types", "Angle sum property", "Mid-point theorem"] },
+        { "name": "Areas of Parallelograms and Triangles", "topics": ["Area formulas", "Applications"] },
+        { "name": "Circles", "topics": ["Arcs", "Chords", "Tangents", "Angle subtended"] },
+        { "name": "Constructions", "topics": ["Bisectors", "Perpendiculars", "Triangle constructions"] },
+        { "name": "Heron’s Formula", "topics": ["Area of triangle", "Applications"] },
+        { "name": "Surface Areas and Volumes", "topics": ["Cubes", "Cylinders", "Cones", "Spheres"] },
+        { "name": "Statistics", "topics": ["Data collection", "Mean", "Median", "Mode"] },
+        { "name": "Probability", "topics": ["Simple events", "Experimental probability"] }
+      ]
+    },
+    "English": {
+      "Beehive": [
+        "The Fun They Had",
+        "The Sound of Music",
+        "The Little Girl",
+        "A Truly Beautiful Mind",
+        "The Snake and the Mirror",
+        "My Childhood",
+        "Packing",
+        "Reach for the Top",
+        "The Bond of Love"
+      ],
+      "Moments": [
+        "The Lost Child",
+        "The Adventures of Toto",
+        "Iswaran the Storyteller",
+        "In the Kingdom of Fools",
+        "The Happy Prince"
+      ]
+    },
+    "Hindi": {
+      "स्पर्श भाग 1": [
+        "दो बैलों की कथा",
+        "ल्हासा की ओर",
+        "साखियाँ और सबद",
+        "वाख",
+        "कैदी और कोकिला"
+      ],
+      "संचयन भाग 1": [
+        "गिल्लू",
+        "स्मृति",
+        "कल्लू कुम्हार की उनाकोटी"
+      ]
+    },
+    "Social Science": {
+      "History": [
+        "The French Revolution",
+        "Socialism in Europe and the Russian Revolution",
+        "Nazism and the Rise of Hitler",
+        "Forest Society and Colonialism",
+        "Pastoralists in the Modern World"
+      ],
+      "Geography": [
+        "India – Size and Location",
+        "Physical Features of India",
+        "Drainage",
+        "Climate",
+        "Natural Vegetation and Wildlife",
+        "Population"
+      ],
+      "Civics": [
+        "What is Democracy? Why Democracy?",
+        "Constitutional Design",
+        "Electoral Politics",
+        "Working of Institutions",
+        "Democratic Rights"
+      ],
+      "Economics": [
+        "The Story of Village Palampur",
+        "People as Resource",
+        "Poverty as a Challenge",
+        "Food Security in India"
+      ]
+    }
+  }
+}
