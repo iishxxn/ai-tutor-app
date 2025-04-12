@@ -1,150 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI Tutor</title>
+  <title>Upwise | AI Tutor</title>
   <style>
     body {
-      font-family: "Segoe UI", sans-serif;
-      background: #fefefe;
-      margin: 0;
-      padding: 0;
-      color: #222;
-    }
-    header {
-      text-align: center;
-      padding: 2rem 1rem 1rem;
-      background-color: #eef4ff;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 2rem;
+      background-color: #f8f9fa;
     }
     h1 {
-      margin: 0;
-      font-size: 2rem;
+      color: #1a1a1a;
     }
-    p {
-      color: #555;
-    }
-    .container {
-      max-width: 700px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
-    .subjects {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-    .subject {
-      padding: 1rem 1.5rem;
-      background: #e0ecff;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-    .subject:hover {
-      background: #c9dcff;
-    }
-    .selected {
-      background: #007bff;
-      color: white;
-    }
-    #chat-box {
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .message {
-      background: #f1f1f1;
-      padding: 1rem;
-      border-radius: 10px;
-    }
-    .message.ai {
-      background: #e8f5ff;
-    }
-    input, button {
+    select, button {
+      padding: 10px;
       font-size: 1rem;
-      padding: 0.7rem;
-      margin-top: 1rem;
-      width: 100%;
-      box-sizing: border-box;
+      margin: 10px 0;
     }
-    button {
-      background: #007bff;
-      color: white;
-      border: none;
-      cursor: pointer;
-      margin-top: 0.5rem;
+    #content {
+      margin-top: 20px;
+      padding: 1rem;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    button:hover {
-      background: #005fcc;
+    h2 {
+      color: #333;
+    }
+    ul {
+      padding-left: 1.2rem;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>🎓 AI Tutor</h1>
-  <p>Learn anything with your personal AI teacher.</p>
-</header>
+  <h1>🎓 Welcome to Upwise</h1>
+  <p>Select your class and subject to start learning:</p>
 
-<div class="container">
-  <div class="subjects" id="subjects">
-    <div class="subject selected" data-subject="general">General</div>
-    <div class="subject" data-subject="math">Math</div>
-    <div class="subject" data-subject="python">Python</div>
-    <div class="subject" data-subject="science">Science</div>
-    <div class="subject" data-subject="history">History</div>
-    <div class="subject" data-subject="business">Business</div>
+  <!-- Class Dropdown -->
+  <label for="class-select">Choose Class:</label>
+  <select id="class-select" onchange="handleClassChange()">
+    <option value="">--Select Class--</option>
+    <option value="class9">Class 9</option>
+    <option value="class10">Class 10</option>
+  </select>
+
+  <!-- Subject Dropdown (appears after class selection) -->
+  <div id="subject-container" style="display:none;">
+    <label for="subject-select">Choose Subject:</label>
+    <select id="subject-select" onchange="handleSubjectChange()">
+      <option value="">--Select Subject--</option>
+    </select>
   </div>
 
-  <input id="message" placeholder="Ask your question..."/>
-  <button onclick="sendMessage()">Ask AI</button>
+  <!-- Displayed Data -->
+  <div id="content"></div>
 
-  <div id="chat-box"></div>
-</div>
+  <script>
+    const subjectsMap = {
+      class9: [],
+      class10: []
+    };
 
-<script>
-  let selectedSubject = "general";
+    async function handleClassChange() {
+      const selectedClass = document.getElementById("class-select").value;
+      if (!selectedClass) return;
 
-  document.querySelectorAll(".subject").forEach(subject => {
-    subject.addEventListener("click", () => {
-      document.querySelectorAll(".subject").forEach(s => s.classList.remove("selected"));
-      subject.classList.add("selected");
-      selectedSubject = subject.getAttribute("data-subject");
-    });
-  });
+      const res = await fetch(`/data/${selectedClass}`);
+      const data = await res.json();
 
-  async function sendMessage() {
-    const messageInput = document.getElementById("message");
-    const chatBox = document.getElementById("chat-box");
-    const message = messageInput.value;
-    messageInput.value = "";
+      subjectsMap[selectedClass] = data;
 
-    // Show user message
-    const userDiv = document.createElement("div");
-    userDiv.className = "message";
-    userDiv.textContent = "👤 " + message;
-    chatBox.appendChild(userDiv);
+      const subjectSelect = document.getElementById("subject-select");
+      subjectSelect.innerHTML = '<option value="">--Select Subject--</option>';
 
-    // Loading placeholder
-    const loading = document.createElement("div");
-    loading.className = "message ai";
-    loading.textContent = "🤖 Thinking...";
-    chatBox.appendChild(loading);
+      Object.keys(data).forEach(subject => {
+        const opt = document.createElement("option");
+        opt.value = subject;
+        opt.textContent = subject;
+        subjectSelect.appendChild(opt);
+      });
 
-    const res = await fetch("/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message, subject: selectedSubject })
-    });
+      document.getElementById("subject-container").style.display = "block";
+      document.getElementById("content").innerHTML = "";
+    }
 
-    const data = await res.json();
-    loading.textContent = "🤖 " + (data.message || data.reply);
-  }
-</script>
+    function handleSubjectChange() {
+      const selectedClass = document.getElementById("class-select").value;
+      const selectedSubject = document.getElementById("subject-select").value;
+      const chapters = subjectsMap[selectedClass][selectedSubject];
+
+      const content = document.getElementById("content");
+      content.innerHTML = `<h2>${selectedSubject} - Chapters</h2><ul>` +
+        chapters.map(ch => `<li>Chapter ${ch.chapter}: ${ch.title}</li>`).join('') +
+        `</ul>`;
+    }
+  </script>
 
 </body>
 </html>
+
