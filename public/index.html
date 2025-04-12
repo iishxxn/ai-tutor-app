@@ -2,47 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Upwise – AI-Powered Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upwise – AI Education Platform</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">Upwise</div>
+
+  <header>
+    <div class="logo">🎓 Upwise</div>
     <nav>
-      <ul class="nav-links">
-        <li class="dropdown">
-          <span>Class 9</span>
-          <ul class="dropdown-menu">
-            <li><a href="#" data-class="9" data-subject="math">Math</a></li>
-            <li><a href="#" data-class="9" data-subject="science">Science</a></li>
-            <li><a href="#" data-class="9" data-subject="english">English</a></li>
-            <li><a href="#" data-class="9" data-subject="sst">Social Science</a></li>
-            <li><a href="#" data-class="9" data-subject="hindi">Hindi</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <span>Class 10</span>
-          <ul class="dropdown-menu">
-            <li><a href="#" data-class="10" data-subject="math">Math</a></li>
-            <li><a href="#" data-class="10" data-subject="science">Science</a></li>
-            <li><a href="#" data-class="10" data-subject="english">English</a></li>
-            <li><a href="#" data-class="10" data-subject="sst">Social Science</a></li>
-            <li><a href="#" data-class="10" data-subject="hindi">Hindi</a></li>
-          </ul>
-        </li>
-      </ul>
+      <div class="dropdown">
+        <button class="dropbtn">Class 9</button>
+        <div class="dropdown-menu">
+          <a href="#" data-subject="math" data-class="class9">Math</a>
+          <a href="#" data-subject="science" data-class="class9">Science</a>
+          <a href="#" data-subject="english" data-class="class9">English</a>
+          <a href="#" data-subject="social" data-class="class9">Social Science</a>
+          <a href="#" data-subject="hindi" data-class="class9">Hindi</a>
+          <!-- Add more subjects here -->
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Class 10</button>
+        <div class="dropdown-menu">
+          <a href="#" data-subject="math" data-class="class10">Math</a>
+          <a href="#" data-subject="science" data-class="class10">Science</a>
+          <a href="#" data-subject="english" data-class="class10">English</a>
+          <a href="#" data-subject="social" data-class="class10">Social Science</a>
+          <a href="#" data-subject="hindi" data-class="class10">Hindi</a>
+          <!-- Add more subjects here -->
+        </div>
+      </div>
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Learn Smarter with AI</h1>
-    <p>Your personalized tutor for CBSE Class 9 & 10 – powered by GPT-4</p>
-    <button class="cta-btn">Start Learning</button>
-  </section>
-
-  <section id="content"></section>
+  <main>
+    <section id="content">
+      <h1>Welcome to Upwise 🎓</h1>
+      <p>Select your class and subject to begin learning with your personal AI tutor.</p>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
 </html>
+
+ 
