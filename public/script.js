@@ -1,42 +1,31 @@
-// DOM elements
-const dropdownLinks = document.querySelectorAll(".dropdown-menu a");
-const contentDiv = document.getElementById("content");
-
-// Function to load subject data dynamically
-async function loadSubjectData(subject, className) {
-  try {
-    const response = await fetch(`/data/${className}`);
-    const data = await response.json();
-
-    const subjectData = data[subject];
-
-    if (!subjectData) {
-      contentDiv.innerHTML = `<p>🚫 No data found for ${subject} in ${className}.</p>`;
-      return;
-    }
-
-    // Display data
-    contentDiv.innerHTML = `<h2>${subject.toUpperCase()} - ${className.toUpperCase()}</h2>`;
-    subjectData.chapters.forEach((chapter) => {
-      contentDiv.innerHTML += `
-        <div style="margin-bottom: 1.2rem;">
-          <h3>${chapter.title}</h3>
-          <p>${chapter.summary}</p>
-        </div>
-      `;
-    });
-  } catch (error) {
-    console.error("Error loading subject data:", error);
-    contentDiv.innerHTML = "<p>❌ Failed to load content.</p>";
-  }
-}
-
-// Event listeners for dropdown links
-dropdownLinks.forEach((link) => {
-  link.addEventListener("click", (e) => {
+document.querySelectorAll('.dropdown-content a').forEach(item => {
+  item.addEventListener('click', async (e) => {
     e.preventDefault();
-    const subject = e.target.dataset.subject;
-    const className = e.target.dataset.class;
-    loadSubjectData(subject, className);
+
+    const subject = item.getAttribute('data-subject');
+    const className = item.getAttribute('data-class');
+    const userMessage = prompt(`What do you want to learn in ${subject}?`);
+
+    if (!userMessage) return;
+
+    const responseContainer = document.getElementById('content');
+    responseContainer.innerHTML = `<p>Loading response for <strong>${subject}</strong>...</p>`;
+
+    try {
+      const res = await fetch('/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMessage, subject: subject, className: className })
+      });
+
+      const data = await res.json();
+      responseContainer.innerHTML = `
+        <h2>Subject: ${subject.charAt(0).toUpperCase() + subject.slice(1)}</h2>
+        <p><strong>Q:</strong> ${userMessage}</p>
+        <p><strong>AI:</strong> ${data.message}</p>
+      `;
+    } catch (err) {
+      responseContainer.innerHTML = `<p>Something went wrong. Please try again.</p>`;
+    }
   });
 });
