@@ -1,51 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Upwise – AI Education Platform</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upwise AI Tutor</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
   <header>
-    <div class="logo">🎓 Upwise</div>
-    <nav>
-      <div class="dropdown">
-        <button class="dropbtn">Class 9</button>
-        <div class="dropdown-menu">
-          <a href="#" data-subject="math" data-class="class9">Math</a>
-          <a href="#" data-subject="science" data-class="class9">Science</a>
-          <a href="#" data-subject="english" data-class="class9">English</a>
-          <a href="#" data-subject="social" data-class="class9">Social Science</a>
-          <a href="#" data-subject="hindi" data-class="class9">Hindi</a>
-          <!-- Add more subjects here -->
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropbtn">Class 10</button>
-        <div class="dropdown-menu">
-          <a href="#" data-subject="math" data-class="class10">Math</a>
-          <a href="#" data-subject="science" data-class="class10">Science</a>
-          <a href="#" data-subject="english" data-class="class10">English</a>
-          <a href="#" data-subject="social" data-class="class10">Social Science</a>
-          <a href="#" data-subject="hindi" data-class="class10">Hindi</a>
-          <!-- Add more subjects here -->
-        </div>
-      </div>
-    </nav>
+    <div class="logo">
+      <h1>Upwise</h1>
+    </div>
   </header>
 
   <main>
-    <section id="content">
-      <h1>Welcome to Upwise 🎓</h1>
-      <p>Select your class and subject to begin learning with your personal AI tutor.</p>
+    <section class="intro">
+      <h2>Welcome to Upwise</h2>
+      <p>Your AI-powered tutor is here to help you learn and grow.</p>
+    </section>
+
+    <section class="dropdown-section">
+      <div class="dropdown">
+        <button class="dropbtn">Select Class & Subject</button>
+        <div class="dropdown-content">
+          <a href="#" data-class="class9" data-subject="math">Class 9 - Math</a>
+          <a href="#" data-class="class9" data-subject="science">Class 9 - Science</a>
+          <a href="#" data-class="class10" data-subject="math">Class 10 - Math</a>
+          <a href="#" data-class="class10" data-subject="science">Class 10 - Science</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="content" class="response-section">
+      <!-- AI response will appear here -->
     </section>
   </main>
+
+  <footer>
+    <p>&copy; 2025 Upwise | All Rights Reserved</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
-
- 
