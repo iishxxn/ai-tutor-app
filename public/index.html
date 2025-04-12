@@ -2,102 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Upwise | AI Tutor</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      padding: 2rem;
-      background-color: #f8f9fa;
-    }
-    h1 {
-      color: #1a1a1a;
-    }
-    select, button {
-      padding: 10px;
-      font-size: 1rem;
-      margin: 10px 0;
-    }
-    #content {
-      margin-top: 20px;
-      padding: 1rem;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #333;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upwise – AI-Powered Learning</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header class="navbar">
+    <div class="logo">Upwise</div>
+    <nav>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <span>Class 9</span>
+          <ul class="dropdown-menu">
+            <li><a href="#" data-class="9" data-subject="math">Math</a></li>
+            <li><a href="#" data-class="9" data-subject="science">Science</a></li>
+            <li><a href="#" data-class="9" data-subject="english">English</a></li>
+            <li><a href="#" data-class="9" data-subject="sst">Social Science</a></li>
+            <li><a href="#" data-class="9" data-subject="hindi">Hindi</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <span>Class 10</span>
+          <ul class="dropdown-menu">
+            <li><a href="#" data-class="10" data-subject="math">Math</a></li>
+            <li><a href="#" data-class="10" data-subject="science">Science</a></li>
+            <li><a href="#" data-class="10" data-subject="english">English</a></li>
+            <li><a href="#" data-class="10" data-subject="sst">Social Science</a></li>
+            <li><a href="#" data-class="10" data-subject="hindi">Hindi</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-  <h1>🎓 Welcome to Upwise</h1>
-  <p>Select your class and subject to start learning:</p>
+  <section class="hero">
+    <h1>Learn Smarter with AI</h1>
+    <p>Your personalized tutor for CBSE Class 9 & 10 – powered by GPT-4</p>
+    <button class="cta-btn">Start Learning</button>
+  </section>
 
-  <!-- Class Dropdown -->
-  <label for="class-select">Choose Class:</label>
-  <select id="class-select" onchange="handleClassChange()">
-    <option value="">--Select Class--</option>
-    <option value="class9">Class 9</option>
-    <option value="class10">Class 10</option>
-  </select>
+  <section id="content"></section>
 
-  <!-- Subject Dropdown (appears after class selection) -->
-  <div id="subject-container" style="display:none;">
-    <label for="subject-select">Choose Subject:</label>
-    <select id="subject-select" onchange="handleSubjectChange()">
-      <option value="">--Select Subject--</option>
-    </select>
-  </div>
-
-  <!-- Displayed Data -->
-  <div id="content"></div>
-
-  <script>
-    const subjectsMap = {
-      class9: [],
-      class10: []
-    };
-
-    async function handleClassChange() {
-      const selectedClass = document.getElementById("class-select").value;
-      if (!selectedClass) return;
-
-      const res = await fetch(`/data/${selectedClass}`);
-      const data = await res.json();
-
-      subjectsMap[selectedClass] = data;
-
-      const subjectSelect = document.getElementById("subject-select");
-      subjectSelect.innerHTML = '<option value="">--Select Subject--</option>';
-
-      Object.keys(data).forEach(subject => {
-        const opt = document.createElement("option");
-        opt.value = subject;
-        opt.textContent = subject;
-        subjectSelect.appendChild(opt);
-      });
-
-      document.getElementById("subject-container").style.display = "block";
-      document.getElementById("content").innerHTML = "";
-    }
-
-    function handleSubjectChange() {
-      const selectedClass = document.getElementById("class-select").value;
-      const selectedSubject = document.getElementById("subject-select").value;
-      const chapters = subjectsMap[selectedClass][selectedSubject];
-
-      const content = document.getElementById("content");
-      content.innerHTML = `<h2>${selectedSubject} - Chapters</h2><ul>` +
-        chapters.map(ch => `<li>Chapter ${ch.chapter}: ${ch.title}</li>`).join('') +
-        `</ul>`;
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
-
